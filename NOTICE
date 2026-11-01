@@ -1,0 +1,12 @@
+Flink CDC DB2 AS400 Connector
+Copyright 2026 The Apache Software Foundation
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+This project also incorporates source code and dependencies from Apache Flink CDC,
+Debezium, and JT400. Refer to the applicable source-file license headers and
+third-party dependency notices for the corresponding attribution and license terms.
+
+This project is not affiliated with, endorsed by, or sponsored by the Apache
+Software Foundation, Apache Flink, Debezium, IBM, or the JT400 project.

@@ -1,0 +1,18 @@
+# Maven build output
+target/
+
+# IDE metadata
+.idea/
+.settings/
+.classpath
+.project
+.factorypath
+
+# Claude Code and local agent state
+.claude/
+
+# Local logs and temporary files
+*.log
+*.tmp
+*.swp
+.DS_Store

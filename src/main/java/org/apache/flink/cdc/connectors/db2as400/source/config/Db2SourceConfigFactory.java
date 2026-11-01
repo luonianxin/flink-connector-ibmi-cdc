@@ -17,17 +17,15 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.config;
 
-import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfigFactory;
-import org.apache.flink.cdc.connectors.base.source.EmbeddedFlinkDatabaseHistory;
+import static org.apache.flink.cdc.connectors.base.utils.EnvironmentUtils.checkSupportCheckpointsAfterTasksFinished;
+import static org.apache.flink.util.Preconditions.checkNotNull;
 
 import io.debezium.config.Configuration;
 import io.debezium.connector.db2as400.As400RpcConnector;
-
 import java.util.Properties;
 import java.util.UUID;
-
-import static org.apache.flink.cdc.connectors.base.utils.EnvironmentUtils.checkSupportCheckpointsAfterTasksFinished;
-import static org.apache.flink.util.Preconditions.checkNotNull;
+import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfigFactory;
+import org.apache.flink.cdc.connectors.base.source.EmbeddedFlinkDatabaseHistory;
 
 /** Factory for creating {@link Db2As400SourceConfig}. */
 public class Db2SourceConfigFactory extends JdbcSourceConfigFactory {

@@ -1,19 +1,17 @@
 package org.apache.flink.cdc.connectors.db2as400.source.offset;
 
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-import org.apache.flink.cdc.connectors.base.source.meta.offset.OffsetFactory;
-
-import io.debezium.ibmi.db2.journal.retrieve.JournalProcessedPosition;
-
-import java.math.BigInteger;
-import java.time.Instant;
-import java.util.Map;
-
 import static org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset.OFFSET_KEY;
 import static org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset.PROCESSED_KEY;
 import static org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset.RECEIVER_KEY;
 import static org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset.RECEIVER_LIBRARY_KEY;
 import static org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset.TIMESTAMP_KEY;
+
+import io.debezium.ibmi.db2.journal.retrieve.JournalProcessedPosition;
+import java.math.BigInteger;
+import java.time.Instant;
+import java.util.Map;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.OffsetFactory;
 
 public class JournalOffsetFactory extends OffsetFactory {
 

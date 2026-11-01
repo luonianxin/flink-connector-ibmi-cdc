@@ -17,16 +17,14 @@
 
 package org.apache.flink.cdc.connectors.db2as400;
 
+import static org.apache.flink.util.Preconditions.checkNotNull;
+
+import io.debezium.connector.db2as400.As400RpcConnector;
+import java.util.Properties;
 import org.apache.flink.cdc.connectors.base.options.StartupOptions;
 import org.apache.flink.cdc.debezium.DebeziumDeserializationSchema;
 import org.apache.flink.cdc.debezium.DebeziumSourceFunction;
 import org.apache.flink.cdc.debezium.Validator;
-
-import io.debezium.connector.db2as400.As400RpcConnector;
-
-import java.util.Properties;
-
-import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /** Source for DB2 CDC connector. */
 public class Db2As400Source {

@@ -17,6 +17,16 @@
 
 package org.apache.flink.cdc.connectors.db2as400.table;
 
+import java.time.Duration;
+import java.time.ZoneId;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.cdc.connectors.base.options.StartupOptions;
 import org.apache.flink.cdc.connectors.base.source.jdbc.JdbcIncrementalSource;
@@ -36,18 +46,6 @@ import org.apache.flink.table.connector.source.abilities.SupportsReadingMetadata
 import org.apache.flink.table.data.RowData;
 import org.apache.flink.table.types.DataType;
 import org.apache.flink.table.types.logical.RowType;
-
-import javax.annotation.Nullable;
-
-import java.time.Duration;
-import java.time.ZoneId;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /** TableSource for DB2 CDC connector. */
 public class Db2As400TableSource implements ScanTableSource, SupportsReadingMetadata {

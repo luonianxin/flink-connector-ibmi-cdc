@@ -17,20 +17,19 @@
 
 package org.apache.flink.cdc.debezium.internal;
 
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.registerHistory;
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.removeHistory;
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.retrieveHistory;
+
 import io.debezium.config.Configuration;
 import io.debezium.relational.history.AbstractSchemaHistory;
 import io.debezium.relational.history.HistoryRecord;
 import io.debezium.relational.history.HistoryRecordComparator;
 import io.debezium.relational.history.SchemaHistoryException;
 import io.debezium.relational.history.SchemaHistoryListener;
-
 import java.util.Collection;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
-
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.registerHistory;
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.removeHistory;
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.retrieveHistory;
 
 /**
  * Inspired from {@link io.debezium.relational.history.AbstractSchemaHistory} but we will store the

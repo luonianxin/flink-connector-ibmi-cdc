@@ -17,16 +17,14 @@
 
 package org.apache.flink.cdc.connectors.base.source.meta.wartermark;
 
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-
 import io.debezium.schema.SchemaNameAdjuster;
+import java.util.Map;
+import java.util.Optional;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaBuilder;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
-
-import java.util.Map;
-import java.util.Optional;
 
 /** Utility class to deal Watermark event. */
 public class WatermarkEvent {

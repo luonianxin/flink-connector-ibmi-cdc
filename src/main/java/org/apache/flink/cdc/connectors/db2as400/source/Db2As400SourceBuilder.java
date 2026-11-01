@@ -17,6 +17,10 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source;
 
+import static org.apache.flink.util.Preconditions.checkNotNull;
+
+import java.time.Duration;
+import java.util.Properties;
 import org.apache.flink.cdc.common.annotation.PublicEvolving;
 import org.apache.flink.cdc.connectors.base.options.StartupOptions;
 import org.apache.flink.cdc.connectors.base.source.jdbc.JdbcIncrementalSource;
@@ -24,11 +28,6 @@ import org.apache.flink.cdc.connectors.db2as400.source.config.Db2SourceConfigFac
 import org.apache.flink.cdc.connectors.db2as400.source.dialect.Db2As400Dialect;
 import org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffsetFactory;
 import org.apache.flink.cdc.debezium.DebeziumDeserializationSchema;
-
-import java.time.Duration;
-import java.util.Properties;
-
-import static org.apache.flink.util.Preconditions.checkNotNull;
 
 /**
  * The builder class for {@link Db2As400IncrementalSource} to make it easier for the users to

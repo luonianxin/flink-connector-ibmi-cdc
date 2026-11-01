@@ -17,8 +17,6 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.dialect;
 
-import org.apache.flink.util.FlinkRuntimeException;
-
 import io.debezium.connector.db2as400.As400JdbcConnection;
 import io.debezium.jdbc.JdbcConnection;
 import io.debezium.relational.Table;
@@ -26,11 +24,11 @@ import io.debezium.relational.TableId;
 import io.debezium.relational.Tables;
 import io.debezium.relational.history.TableChanges;
 import io.debezium.relational.history.TableChanges.TableChange;
-
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.apache.flink.util.FlinkRuntimeException;
 
 /** A component used to get schema by table path. */
 public class Db2As400Schema {

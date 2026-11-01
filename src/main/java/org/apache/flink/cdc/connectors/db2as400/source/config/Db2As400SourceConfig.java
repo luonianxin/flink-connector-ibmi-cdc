@@ -17,15 +17,13 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.config;
 
-import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
-import org.apache.flink.cdc.connectors.base.options.StartupOptions;
-
 import io.debezium.config.Configuration;
 import io.debezium.connector.db2as400.As400ConnectorConfig;
-
 import java.time.Duration;
 import java.util.List;
 import java.util.Properties;
+import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
+import org.apache.flink.cdc.connectors.base.options.StartupOptions;
 
 /**
  * Describes the connection information of the Db2 database and the configuration information for

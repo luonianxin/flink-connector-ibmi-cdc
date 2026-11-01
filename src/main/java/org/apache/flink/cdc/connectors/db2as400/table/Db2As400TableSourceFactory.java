@@ -17,23 +17,6 @@
 
 package org.apache.flink.cdc.connectors.db2as400.table;
 
-import org.apache.flink.cdc.connectors.base.options.StartupOptions;
-import org.apache.flink.cdc.connectors.db2as400.utils.OptionUtils;
-import org.apache.flink.configuration.ConfigOption;
-import org.apache.flink.configuration.ConfigOptions;
-import org.apache.flink.configuration.Configuration;
-import org.apache.flink.configuration.ReadableConfig;
-import org.apache.flink.table.api.ValidationException;
-import org.apache.flink.table.catalog.ResolvedSchema;
-import org.apache.flink.table.connector.source.DynamicTableSource;
-import org.apache.flink.table.factories.DynamicTableSourceFactory;
-import org.apache.flink.table.factories.FactoryUtil;
-
-import java.time.Duration;
-import java.time.ZoneId;
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.apache.flink.cdc.connectors.base.options.JdbcSourceOptions.CONNECTION_POOL_SIZE;
 import static org.apache.flink.cdc.connectors.base.options.JdbcSourceOptions.CONNECT_MAX_RETRIES;
 import static org.apache.flink.cdc.connectors.base.options.JdbcSourceOptions.CONNECT_TIMEOUT;
@@ -50,6 +33,22 @@ import static org.apache.flink.cdc.connectors.base.utils.ObjectUtils.doubleCompa
 import static org.apache.flink.cdc.debezium.table.DebeziumOptions.DEBEZIUM_OPTIONS_PREFIX;
 import static org.apache.flink.cdc.debezium.table.DebeziumOptions.getDebeziumProperties;
 import static org.apache.flink.util.Preconditions.checkState;
+
+import java.time.Duration;
+import java.time.ZoneId;
+import java.util.HashSet;
+import java.util.Set;
+import org.apache.flink.cdc.connectors.base.options.StartupOptions;
+import org.apache.flink.cdc.connectors.db2as400.utils.OptionUtils;
+import org.apache.flink.configuration.ConfigOption;
+import org.apache.flink.configuration.ConfigOptions;
+import org.apache.flink.configuration.Configuration;
+import org.apache.flink.configuration.ReadableConfig;
+import org.apache.flink.table.api.ValidationException;
+import org.apache.flink.table.catalog.ResolvedSchema;
+import org.apache.flink.table.connector.source.DynamicTableSource;
+import org.apache.flink.table.factories.DynamicTableSourceFactory;
+import org.apache.flink.table.factories.FactoryUtil;
 
 /** Table source factory for DB2 CDC connector. */
 public class Db2As400TableSourceFactory implements DynamicTableSourceFactory {

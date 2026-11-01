@@ -17,6 +17,10 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.dialect;
 
+import io.debezium.jdbc.JdbcConnection;
+import io.debezium.relational.Column;
+import io.debezium.relational.TableId;
+import java.sql.SQLException;
 import org.apache.flink.cdc.common.annotation.Internal;
 import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
 import org.apache.flink.cdc.connectors.base.dialect.JdbcDataSourceDialect;
@@ -24,12 +28,6 @@ import org.apache.flink.cdc.connectors.base.source.assigner.splitter.JdbcSourceC
 import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400TypeUtils;
 import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils;
 import org.apache.flink.table.types.DataType;
-
-import io.debezium.jdbc.JdbcConnection;
-import io.debezium.relational.Column;
-import io.debezium.relational.TableId;
-
-import java.sql.SQLException;
 
 /**
  * The splitter to split the table into chunks using primary-key (by default) or a given split key.

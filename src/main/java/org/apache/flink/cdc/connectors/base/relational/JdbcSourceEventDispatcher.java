@@ -17,12 +17,6 @@
 
 package org.apache.flink.cdc.connectors.base.relational;
 
-import org.apache.flink.cdc.connectors.base.relational.handler.SchemaChangeEventHandler;
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
-import org.apache.flink.cdc.connectors.base.source.meta.wartermark.WatermarkEvent;
-import org.apache.flink.cdc.connectors.base.source.meta.wartermark.WatermarkKind;
-
 import io.debezium.config.CommonConnectorConfig;
 import io.debezium.connector.base.ChangeEventQueue;
 import io.debezium.document.DocumentWriter;
@@ -40,16 +34,20 @@ import io.debezium.schema.HistorizedDatabaseSchema;
 import io.debezium.schema.SchemaChangeEvent;
 import io.debezium.schema.SchemaNameAdjuster;
 import io.debezium.spi.topic.TopicNamingStrategy;
+import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
+import org.apache.flink.cdc.connectors.base.relational.handler.SchemaChangeEventHandler;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
+import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
+import org.apache.flink.cdc.connectors.base.source.meta.wartermark.WatermarkEvent;
+import org.apache.flink.cdc.connectors.base.source.meta.wartermark.WatermarkKind;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaBuilder;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.util.Collection;
-import java.util.Map;
 
 /**
  * A subclass implementation of {@link EventDispatcher}.

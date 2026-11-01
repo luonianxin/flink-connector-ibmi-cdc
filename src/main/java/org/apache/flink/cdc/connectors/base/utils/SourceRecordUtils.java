@@ -17,28 +17,26 @@
 
 package org.apache.flink.cdc.connectors.base.utils;
 
-import org.apache.flink.table.types.logical.RowType;
+import static io.debezium.connector.AbstractSourceInfo.DATABASE_NAME_KEY;
+import static io.debezium.connector.AbstractSourceInfo.SCHEMA_NAME_KEY;
+import static io.debezium.connector.AbstractSourceInfo.TABLE_NAME_KEY;
+import static org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher.HISTORY_RECORD_FIELD;
 
 import io.debezium.data.Envelope;
 import io.debezium.document.DocumentReader;
 import io.debezium.relational.TableId;
 import io.debezium.relational.history.HistoryRecord;
 import io.debezium.schema.SchemaNameAdjuster;
-import org.apache.kafka.connect.data.Schema;
-import org.apache.kafka.connect.data.Struct;
-import org.apache.kafka.connect.source.SourceRecord;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
-
-import static io.debezium.connector.AbstractSourceInfo.DATABASE_NAME_KEY;
-import static io.debezium.connector.AbstractSourceInfo.SCHEMA_NAME_KEY;
-import static io.debezium.connector.AbstractSourceInfo.TABLE_NAME_KEY;
-import static org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher.HISTORY_RECORD_FIELD;
+import org.apache.flink.table.types.logical.RowType;
+import org.apache.kafka.connect.data.Schema;
+import org.apache.kafka.connect.data.Struct;
+import org.apache.kafka.connect.source.SourceRecord;
 
 /** Utility class to deal record. */
 public class SourceRecordUtils {

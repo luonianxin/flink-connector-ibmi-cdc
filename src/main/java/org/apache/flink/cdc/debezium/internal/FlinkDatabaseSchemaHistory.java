@@ -17,7 +17,10 @@
 
 package org.apache.flink.cdc.debezium.internal;
 
-import org.apache.flink.cdc.debezium.history.FlinkJsonTableChangeSerializer;
+import static io.debezium.relational.history.TableChanges.TableChange;
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.registerHistory;
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.removeHistory;
+import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.retrieveHistory;
 
 import io.debezium.config.Configuration;
 import io.debezium.relational.TableId;
@@ -30,17 +33,12 @@ import io.debezium.relational.history.SchemaHistoryException;
 import io.debezium.relational.history.SchemaHistoryListener;
 import io.debezium.relational.history.TableChanges;
 import io.debezium.schema.DatabaseSchema;
-
 import java.time.Instant;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-
-import static io.debezium.relational.history.TableChanges.TableChange;
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.registerHistory;
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.removeHistory;
-import static org.apache.flink.cdc.debezium.utils.DatabaseHistoryUtil.retrieveHistory;
+import org.apache.flink.cdc.debezium.history.FlinkJsonTableChangeSerializer;
 
 /**
  * The {@link FlinkDatabaseSchemaHistory} only stores the latest schema of the monitored tables.

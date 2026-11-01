@@ -1,12 +1,10 @@
 package org.apache.flink.cdc.connectors.db2as400.source.offset;
 
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-
 import io.debezium.ibmi.db2.journal.retrieve.JournalProcessedPosition;
-
 import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
 
 /** IBM i Journal 位置偏移量实现 包装 Debezium 的 JournalProcessedPosition */
 public class JournalOffset extends Offset {

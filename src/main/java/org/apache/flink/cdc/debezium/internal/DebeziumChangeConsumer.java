@@ -17,20 +17,18 @@
 
 package org.apache.flink.cdc.debezium.internal;
 
-import org.apache.flink.cdc.common.annotation.Internal;
-
 import io.debezium.embedded.EmbeddedEngineChangeEvent;
 import io.debezium.engine.ChangeEvent;
 import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.DebeziumEngine.RecordCommitter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.apache.flink.cdc.common.annotation.Internal;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.source.SourceRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /** Consume debezium change events. */
 @Internal

@@ -17,11 +17,6 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.fetch;
 
-import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
-import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
-import org.apache.flink.cdc.connectors.base.source.meta.split.StreamSplit;
-import org.apache.flink.cdc.connectors.base.source.reader.external.FetchTask;
-
 import io.debezium.connector.db2as400.As400ConnectorConfig;
 import io.debezium.connector.db2as400.As400DatabaseSchema;
 import io.debezium.connector.db2as400.As400JdbcConnection;
@@ -32,6 +27,10 @@ import io.debezium.connector.db2as400.As400StreamingChangeEventSource;
 import io.debezium.pipeline.ErrorHandler;
 import io.debezium.pipeline.source.spi.ChangeEventSource.ChangeEventSourceContext;
 import io.debezium.util.Clock;
+import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
+import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
+import org.apache.flink.cdc.connectors.base.source.meta.split.StreamSplit;
+import org.apache.flink.cdc.connectors.base.source.reader.external.FetchTask;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

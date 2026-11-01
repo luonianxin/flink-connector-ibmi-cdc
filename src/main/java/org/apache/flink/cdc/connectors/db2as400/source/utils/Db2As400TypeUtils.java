@@ -17,12 +17,10 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.utils;
 
+import io.debezium.relational.Column;
+import java.sql.Types;
 import org.apache.flink.table.api.DataTypes;
 import org.apache.flink.table.types.DataType;
-
-import io.debezium.relational.Column;
-
-import java.sql.Types;
 
 /** Utilities for converting from Db2 types to Flink SQL types. */
 public class Db2As400TypeUtils {

@@ -17,8 +17,6 @@
 
 package org.apache.flink.cdc.connectors.base.source;
 
-import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitState;
-
 import io.debezium.config.Configuration;
 import io.debezium.relational.TableId;
 import io.debezium.relational.Tables;
@@ -29,7 +27,6 @@ import io.debezium.relational.history.HistoryRecordComparator;
 import io.debezium.relational.history.SchemaHistoryException;
 import io.debezium.relational.history.SchemaHistoryListener;
 import io.debezium.relational.history.TableChanges.TableChange;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -37,6 +34,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.function.Consumer;
+import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitState;
 
 /**
  * A {@link AbstractSchemaHistory} implementation which store the latest table schema in Flink

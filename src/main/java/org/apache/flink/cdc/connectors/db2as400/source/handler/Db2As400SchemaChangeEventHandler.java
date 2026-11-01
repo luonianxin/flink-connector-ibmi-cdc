@@ -17,13 +17,11 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.handler;
 
-import org.apache.flink.cdc.connectors.base.relational.handler.SchemaChangeEventHandler;
-
 import io.debezium.schema.SchemaChangeEvent;
-import org.apache.kafka.connect.data.Struct;
-
 import java.util.HashMap;
 import java.util.Map;
+import org.apache.flink.cdc.connectors.base.relational.handler.SchemaChangeEventHandler;
+import org.apache.kafka.connect.data.Struct;
 
 /**
  * This Db2SchemaChangeEventHandler helps to parse the source struct in SchemaChangeEvent and

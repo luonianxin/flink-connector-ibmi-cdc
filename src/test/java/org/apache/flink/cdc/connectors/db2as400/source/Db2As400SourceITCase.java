@@ -1,5 +1,15 @@
 package org.apache.flink.cdc.connectors.db2as400.source;
 
+import static java.lang.String.format;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 import org.apache.flink.api.common.JobID;
 import org.apache.flink.api.common.restartstrategy.RestartStrategies;
 import org.apache.flink.cdc.connectors.db2as400.source.Db2As400SourceBuilder.Db2As400IncrementalSource;
@@ -13,24 +23,12 @@ import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.apache.flink.test.util.MiniClusterWithClientResource;
 import org.apache.flink.types.Row;
 import org.apache.flink.util.CloseableIterator;
-
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.Timeout;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static java.lang.String.format;
 
 /** IT tests for {@link Db2As400IncrementalSource}. */
 public class Db2As400SourceITCase {
@@ -54,11 +52,9 @@ public class Db2As400SourceITCase {
     assumeExternalEnvironmentConfigured();
   }
 
-  private static final String IBM_I_HOST =
-      System.getProperty("ibmi.test.host", "<ibmi-host>");
+  private static final String IBM_I_HOST = System.getProperty("ibmi.test.host", "<ibmi-host>");
   private static final String IBM_I_PORT = System.getProperty("ibmi.test.port", "50000");
-  private static final String IBM_I_USER =
-      System.getProperty("ibmi.test.user", "<ibmi-user>");
+  private static final String IBM_I_USER = System.getProperty("ibmi.test.user", "<ibmi-user>");
   private static final String IBM_I_PASSWORD =
       System.getProperty("ibmi.test.password", "<ibmi-password>");
   private static final String IBM_I_DATABASE =

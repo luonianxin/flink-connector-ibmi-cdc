@@ -17,12 +17,8 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.fetch;
 
-import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
-import org.apache.flink.cdc.connectors.base.source.meta.split.SnapshotSplit;
-import org.apache.flink.cdc.connectors.base.source.meta.split.StreamSplit;
-import org.apache.flink.cdc.connectors.base.source.reader.external.AbstractScanFetchTask;
-import org.apache.flink.cdc.connectors.db2as400.source.fetch.Db2As400StreamFetchTask.StreamSplitReadTask;
-import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils;
+import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.buildSplitScanQuery;
+import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.readTableSplitDataStatement;
 
 import io.debezium.DebeziumException;
 import io.debezium.config.Configuration;
@@ -48,17 +44,19 @@ import io.debezium.util.Clock;
 import io.debezium.util.ColumnUtils;
 import io.debezium.util.Strings;
 import io.debezium.util.Threads;
-import org.apache.kafka.connect.errors.ConnectException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Duration;
-
-import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.buildSplitScanQuery;
-import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.readTableSplitDataStatement;
+import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
+import org.apache.flink.cdc.connectors.base.source.meta.split.SnapshotSplit;
+import org.apache.flink.cdc.connectors.base.source.meta.split.StreamSplit;
+import org.apache.flink.cdc.connectors.base.source.reader.external.AbstractScanFetchTask;
+import org.apache.flink.cdc.connectors.db2as400.source.fetch.Db2As400StreamFetchTask.StreamSplitReadTask;
+import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils;
+import org.apache.kafka.connect.errors.ConnectException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** The task to work for fetching data of Db2 table snapshot split. */
 public class Db2As400ScanFetchTask extends AbstractScanFetchTask {

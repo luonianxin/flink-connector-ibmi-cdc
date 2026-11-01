@@ -17,13 +17,6 @@
 
 package org.apache.flink.cdc.connectors.base.source.reader.external;
 
-import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
-import org.apache.flink.cdc.connectors.base.config.SourceConfig;
-import org.apache.flink.cdc.connectors.base.dialect.JdbcDataSourceDialect;
-import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
-import org.apache.flink.cdc.connectors.base.utils.SourceRecordUtils;
-import org.apache.flink.table.types.logical.RowType;
-
 import io.debezium.config.CommonConnectorConfig;
 import io.debezium.data.Envelope;
 import io.debezium.pipeline.ErrorHandler;
@@ -33,14 +26,19 @@ import io.debezium.relational.RelationalDatabaseSchema;
 import io.debezium.relational.Table;
 import io.debezium.relational.TableId;
 import io.debezium.schema.SchemaNameAdjuster;
-import org.apache.kafka.connect.data.Struct;
-import org.apache.kafka.connect.source.SourceRecord;
-
 import java.time.Instant;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
+import org.apache.flink.cdc.connectors.base.config.SourceConfig;
+import org.apache.flink.cdc.connectors.base.dialect.JdbcDataSourceDialect;
+import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
+import org.apache.flink.cdc.connectors.base.utils.SourceRecordUtils;
+import org.apache.flink.table.types.logical.RowType;
+import org.apache.kafka.connect.data.Struct;
+import org.apache.kafka.connect.source.SourceRecord;
 
 /** The context for fetch task that fetching data of snapshot split from JDBC data source. */
 public abstract class JdbcSourceFetchTaskContext implements FetchTask.Context {

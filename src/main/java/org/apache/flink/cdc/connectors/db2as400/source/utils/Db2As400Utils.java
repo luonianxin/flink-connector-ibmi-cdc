@@ -17,11 +17,8 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.utils;
 
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-import org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset;
-import org.apache.flink.table.api.ValidationException;
-import org.apache.flink.table.types.logical.RowType;
-import org.apache.flink.util.FlinkRuntimeException;
+import static org.apache.flink.table.api.DataTypes.FIELD;
+import static org.apache.flink.table.api.DataTypes.ROW;
 
 import io.debezium.connector.db2as400.As400ConnectorConfig;
 import io.debezium.connector.db2as400.As400DatabaseSchema;
@@ -37,12 +34,6 @@ import io.debezium.relational.Table;
 import io.debezium.relational.TableId;
 import io.debezium.schema.SchemaNameAdjuster;
 import io.debezium.spi.topic.TopicNamingStrategy;
-import org.apache.kafka.connect.source.SourceRecord;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.annotation.Nullable;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -53,9 +44,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static org.apache.flink.table.api.DataTypes.FIELD;
-import static org.apache.flink.table.api.DataTypes.ROW;
+import javax.annotation.Nullable;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
+import org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset;
+import org.apache.flink.table.api.ValidationException;
+import org.apache.flink.table.types.logical.RowType;
+import org.apache.flink.util.FlinkRuntimeException;
+import org.apache.kafka.connect.source.SourceRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /** The utils for Db2As400 data source. */
 public class Db2As400Utils {

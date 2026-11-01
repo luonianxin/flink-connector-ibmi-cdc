@@ -17,6 +17,20 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.dialect;
 
+import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils.createAs400RpcConnection;
+import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils.createDb2As400Connection;
+import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.currentLsn;
+
+import io.debezium.connector.db2as400.As400JdbcConnection;
+import io.debezium.connector.db2as400.As400RpcConnection;
+import io.debezium.jdbc.JdbcConnection;
+import io.debezium.relational.TableId;
+import io.debezium.relational.Tables;
+import io.debezium.relational.history.TableChanges.TableChange;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.apache.flink.cdc.common.annotation.Experimental;
 import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
 import org.apache.flink.cdc.connectors.base.dialect.JdbcDataSourceDialect;
@@ -32,22 +46,6 @@ import org.apache.flink.cdc.connectors.db2as400.source.fetch.Db2As400ScanFetchTa
 import org.apache.flink.cdc.connectors.db2as400.source.fetch.Db2As400StreamFetchTask;
 import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils;
 import org.apache.flink.util.FlinkRuntimeException;
-
-import io.debezium.connector.db2as400.As400JdbcConnection;
-import io.debezium.connector.db2as400.As400RpcConnection;
-import io.debezium.jdbc.JdbcConnection;
-import io.debezium.relational.TableId;
-import io.debezium.relational.Tables;
-import io.debezium.relational.history.TableChanges.TableChange;
-
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils.createAs400RpcConnection;
-import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400ConnectionUtils.createDb2As400Connection;
-import static org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils.currentLsn;
 
 /** The {@link JdbcDataSourceDialect} implementation for Db2 datasource. */
 @Experimental

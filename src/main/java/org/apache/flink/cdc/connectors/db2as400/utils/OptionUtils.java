@@ -17,12 +17,10 @@
 
 package org.apache.flink.cdc.connectors.db2as400.utils;
 
+import java.util.Map;
 import org.apache.flink.configuration.ConfigurationUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
 
 /** A utility class to print configuration of connectors. */
 public class OptionUtils {

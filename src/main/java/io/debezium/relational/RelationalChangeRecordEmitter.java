@@ -12,12 +12,11 @@ import io.debezium.pipeline.spi.OffsetContext;
 import io.debezium.pipeline.spi.Partition;
 import io.debezium.schema.DataCollectionSchema;
 import io.debezium.util.Clock;
+import java.util.Objects;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.header.ConnectHeaders;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Objects;
 
 /**
  * Base class for {@link ChangeRecordEmitter} implementations based on a relational database.

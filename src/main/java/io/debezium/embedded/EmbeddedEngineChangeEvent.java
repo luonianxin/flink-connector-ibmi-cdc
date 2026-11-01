@@ -8,9 +8,8 @@ package io.debezium.embedded;
 import io.debezium.engine.ChangeEvent;
 import io.debezium.engine.Header;
 import io.debezium.engine.RecordChangeEvent;
-import org.apache.kafka.connect.source.SourceRecord;
-
 import java.util.List;
+import org.apache.kafka.connect.source.SourceRecord;
 
 public class EmbeddedEngineChangeEvent<K, V, H> implements ChangeEvent<K, V>, RecordChangeEvent<V> {
 

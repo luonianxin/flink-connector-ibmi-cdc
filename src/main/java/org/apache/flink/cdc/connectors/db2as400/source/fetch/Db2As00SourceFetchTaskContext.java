@@ -17,20 +17,6 @@
 
 package org.apache.flink.cdc.connectors.db2as400.source.fetch;
 
-import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
-import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
-import org.apache.flink.cdc.connectors.base.source.EmbeddedFlinkDatabaseHistory;
-import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
-import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
-import org.apache.flink.cdc.connectors.base.source.reader.external.JdbcSourceFetchTaskContext;
-import org.apache.flink.cdc.connectors.db2as400.source.config.Db2As400SourceConfig;
-import org.apache.flink.cdc.connectors.db2as400.source.dialect.Db2As400Dialect;
-import org.apache.flink.cdc.connectors.db2as400.source.handler.Db2As400SchemaChangeEventHandler;
-import org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset;
-import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils;
-import org.apache.flink.table.types.logical.RowType;
-import org.apache.flink.util.FlinkRuntimeException;
-
 import io.debezium.connector.base.ChangeEventQueue;
 import io.debezium.connector.base.ChangeEventQueue.Builder;
 import io.debezium.connector.db2as400.As400ConnectorConfig;
@@ -60,14 +46,26 @@ import io.debezium.relational.Tables.TableFilter;
 import io.debezium.schema.SchemaNameAdjuster;
 import io.debezium.spi.schema.DataCollectionId;
 import io.debezium.spi.topic.TopicNamingStrategy;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.flink.cdc.connectors.base.config.JdbcSourceConfig;
+import org.apache.flink.cdc.connectors.base.relational.JdbcSourceEventDispatcher;
+import org.apache.flink.cdc.connectors.base.source.EmbeddedFlinkDatabaseHistory;
+import org.apache.flink.cdc.connectors.base.source.meta.offset.Offset;
+import org.apache.flink.cdc.connectors.base.source.meta.split.SourceSplitBase;
+import org.apache.flink.cdc.connectors.base.source.reader.external.JdbcSourceFetchTaskContext;
+import org.apache.flink.cdc.connectors.db2as400.source.config.Db2As400SourceConfig;
+import org.apache.flink.cdc.connectors.db2as400.source.dialect.Db2As400Dialect;
+import org.apache.flink.cdc.connectors.db2as400.source.handler.Db2As400SchemaChangeEventHandler;
+import org.apache.flink.cdc.connectors.db2as400.source.offset.JournalOffset;
+import org.apache.flink.cdc.connectors.db2as400.source.utils.Db2As400Utils;
+import org.apache.flink.table.types.logical.RowType;
+import org.apache.flink.util.FlinkRuntimeException;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.time.Instant;
-import java.util.HashMap;
-import java.util.Map;
 
 /** The context for fetch task that fetching data of snapshot split from Db2 data source. */
 public class Db2As00SourceFetchTaskContext extends JdbcSourceFetchTaskContext {
